@@ -1,0 +1,410 @@
+{
+	"info": {
+		"_postman_id": "6c5d8244-540b-4c34-b18e-845ab67d6cad",
+		"name": "Express Local Library",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "34435083"
+	},
+	"item": [
+		{
+			"name": "Books",
+			"item": [
+				{
+					"name": "Book Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/book/{{TestBook}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"book",
+								"{{TestBook}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Books List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/book_list",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"book_list"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Author",
+			"item": [
+				{
+					"name": "Author Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/author/{{TestAuthor}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"author",
+								"{{TestAuthor}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Author List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/author_list",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"author_list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Author Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\": \"\", //string\r\n    \"family_name\": \"\", //string\r\n    \"date_of_birth\": \"\", //yyyy-mm-dd\r\n    \"date_of_death\": \"\" //yyyy-mm-dd\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/author/create",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"author",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Author Update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"first_name\": \"\", //string\r\n    \"family_name\": \"\", //string\r\n    \"date_of_birth\": \"\", //yyyy-mm-dd\r\n    \"date_of_death\": \"\" //yyyy-mm-dd\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/author/{{TestAuthor}}/update",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"author",
+								"{{TestAuthor}}",
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "BookInstance",
+			"item": [
+				{
+					"name": "BookInstance Details",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/bookinstance/{{TestBookinstance}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"bookinstance",
+								"{{TestBookinstance}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "BookInstance List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/bookinstance_list",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"bookinstance_list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bookinstance Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"book\": \"\", //id\r\n    \"imprint\": \"\", //string\r\n    \"status\": \"\", //Maintenance/Available/Loaned/Reserved\r\n    \"due_back\": \"\" //yyyy-mm-dd\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/bookinstance/create",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"bookinstance",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bookinstance Update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"book\": \"\", //id\r\n    \"imprint\": \"\", //string\r\n    \"status\": \"\", //Maintenance/Available/Loaned/Reserved\r\n    \"due_back\": \"\" //yyyy-mm-dd\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/bookinstance/{{TestBookinstance}}/update",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"bookinstance",
+								"{{TestBookinstance}}",
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Genre",
+			"item": [
+				{
+					"name": "Genre Details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/genre/{{TestGenre}}",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"genre",
+								"{{TestGenre}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Genre List",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{URL}}/api/genre_list",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"genre_list"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Genre Create",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"\" //string\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/genre/create",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"genre",
+								"create"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Genre Update",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"\" //string\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{URL}}/api/genre/{{TestGenre}}/update",
+							"host": [
+								"{{URL}}"
+							],
+							"path": [
+								"api",
+								"genre",
+								"{{TestGenre}}",
+								"update"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "URL",
+			"value": "http://localhost:3000/catalog",
+			"type": "string"
+		},
+		{
+			"key": "TestBook",
+			"value": "66466eb53408f466d0fee8dd",
+			"type": "string"
+		},
+		{
+			"key": "TestAuthor",
+			"value": "66466eb53408f466d0fee8d2",
+			"type": "string"
+		},
+		{
+			"key": "TestBookinstance",
+			"value": "66466eb53408f466d0fee8ec",
+			"type": "string"
+		},
+		{
+			"key": "TestGenre",
+			"value": "66466eb53408f466d0fee8ca",
+			"type": "string"
+		}
+	]
+}

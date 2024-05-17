@@ -343,7 +343,7 @@ select:focus {
 }
 
 .bookinstance-link:hover {
-  color: rgb(51, 110, 51);
+  color: #333;
   font-weight: bold;
 }
 

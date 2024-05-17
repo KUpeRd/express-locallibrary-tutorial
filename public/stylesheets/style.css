@@ -1,8 +1,494 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-color: white;
+  font-family: 'Arial', 'sans-serif', serif;
+  margin: 0;
+  padding: 20px;
+  color: #333;
 }
 
-a {
-  color: #00B7FF;
+h1 {
+  color: white;
+  text-align: center;
+  position: relative;
+  margin-top: 20px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.2rem;
+  letter-spacing: 2px;
+  overflow: hidden;
+}
+
+h1::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: black;
+  background-size: 400% 400%;
+  animation: gradientAnimation 10s ease infinite;
+  z-index: -1;
+}
+
+@keyframes gradientAnimation {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+#index {
+  color: black;
+}
+
+.book-container {
+  display: flex;
+  flex-wrap: nowrap;
+  overflow-x: auto;
+  flex-direction: row;
+  background-color: #f0f0f0;
+  padding: 20px;
+  border: 1px solid #ccc;
+}
+
+.book {
+  display: inline-flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: 1px solid #333;
+  margin: 5px;
+  padding: 20px;
+  width: 250px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.2);
+  background-color: #fff;
+  transition: transform 0.3s;
+}
+
+.book:hover {
+  transform: scale(1.05);
+}
+
+.book img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  filter: grayscale(100%);
+}
+
+.book-title {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #000;
+  text-transform: uppercase;
+}
+
+.book-authors {
+  font-style: italic;
+  color: #555;
+}
+
+.delete-book-button {
+  display: inline-block;
+  padding: 5px 10px;
+  font-size: 16px;
+  color: #fff;
+  background-color: #ff4c4c;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: background-color 0.3s, transform 0.3s;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.delete-book-button:hover {
+  background-color: #ff1a1a;
+  transform: scale(1.05);
+}
+
+.delete-book-button:active {
+  background-color: #e60000;
+  transform: scale(0.95);
+}
+
+.delete-book-button:focus {
+  outline: none;
+  box-shadow: 0 0 5px #ff4c4c;
+}
+
+.toast {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #f44336;
+  color: white;
+  padding: 16px;
+  border-radius: 4px;
+  z-index: 1000;
+  visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.5s, visibility 0.5s;
+}
+.toast.show {
+  visibility: visible;
+  opacity: 1;
+}
+
+input, select, textarea, button {
+  border: 1px solid #333;
+  background-color: #fff;
+  font: 1.25rem / 1.5 sans-serif;
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0.5rem 0.75rem;
+  margin-bottom: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+input:hover, select:hover, textarea:hover {
+  border-color: #000;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+input:focus, select:focus, textarea:focus {
+  border-color: #000;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.3);
+  outline: none;
+}
+
+textarea {
+  min-height: 10rem;
+}
+
+button {
+  background-color: #000;
+  color: #fff;
+  cursor: pointer;
+  border: none;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  border-radius: 0.25rem;
+}
+
+button:hover {
+  background-color: #444;
+  color: #fff;
+}
+
+input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  margin: 0.5rem 0;
+}
+
+label {
+  display: flex;
+  align-items: center;
+  font-size: 1rem;
+  color: #333;
+}
+
+select {
+  appearance: none;
+  background-repeat: no-repeat;
+  background-position: right 0.75rem center;
+  padding-right: 2rem;
+  background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="%23333" d="M4 6l4 4 4-4z"/></svg>');
+}
+
+select:focus {
+  background-image: url('data:image/svg+xml;charset=US-ASCII,<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"><path fill="%23000" d="M4 6l4 4 4-4z"/></svg>');
+}
+
+#modalContent {
+  background-color: #fefefe;
+  margin: auto;
+  padding: 20px;
+  border: 1px solid #888;
+  width: 60%;
+}
+#closeButton {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.sidebar-nav {
+  margin-top: 20px;
+  padding: 0;
+  list-style: none;
+}
+
+.sidebar ul {
+  list-style-type: none;
+  padding-bottom: 10px;
+  margin: 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.sidebar li {
+  text-align: center;
+  margin-right: 10px;
+  position: relative;
+}
+
+.sidebar li:last-child {
+  margin-right: 0;
+}
+
+.sidebar li a {
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+  font-weight: bold;
+  border: 1px solid transparent;
+  padding: 8px 16px;
+  border-radius: 4px;
+  position: relative;
+  overflow: hidden;
+  transition: color 0.3s, border-color 0.3s;
+}
+
+.sidebar li a:hover {
+  color: white;
+}
+
+.sidebar li a::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 0%;
+  height: 100%;
+  background-color: black;
+  z-index: -1;
+  transition: width 0.3s ease-in-out, left 0.3s ease-in-out;
+}
+
+.sidebar li a:hover::before {
+  width: 100%;
+  left: 0;
+}
+
+.sidebar li a::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  width: 120%;
+  height: 2px;
+  background-color: rgba(0, 0, 0, 0.2);
+  transform: translateX(-50%) scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.sidebar li a:hover::after {
+  transform: translateX(-50%) scaleX(1);
+}
+
+.book-instance {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: white;
+  color: black;
+}
+.author-link {
+  font-size: 18px;
+  text-decoration: none;
+  color: black;
+  transition: color 0.1s ease;
+}
+
+.author-link:hover {
+  color: #333;
+  font-weight: bold;
+}
+
+.genre-link {
+  font-size: 18px;
+  text-decoration: none;
+  color: black;
+  transition: color 0.1s ease;
+}
+
+.genre-link:hover {
+  color: #333;
+  font-weight: bold;
+}
+
+.bookinstance-link {
+  text-decoration: none;
+  color: black;
+  transition: color 0.1s ease;
+}
+
+.bookinstance-link:hover {
+  color: rgb(51, 110, 51);
+  font-weight: bold;
+}
+
+.delete-button {
+  width: 75px;
+  background-color: #fff;
+  color: #000;
+  border: 1px solid #000;
+  padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.delete-button:hover {
+  background-color: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+.update-button {
+  width: 75px;
+  background-color: black;
+  color: white;
+  border: 1px solid #000;
+  padding: 5px 10px;
+  font-size: 12px;
+  cursor: pointer;
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.update-button:hover {
+  background-color: rgb(180, 180, 180);
+  color: white;
+  border-color: #000;
+}
+
+.book-title-link {
+  font-size: 18px;
+  text-decoration: none;
+  color: black;
+  transition: 0.1s ease;
+}
+
+.book-title-link:hover {
+  font-weight: bold;
+}
+
+.border-with-background {
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 10px;
+  background-color: white;
+  color: black;
+}
+
+.checkbox-container {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.checkbox-custom {
+  cursor: pointer;
+}
+
+.checkbox-custom input[type="checkbox"] {
+  display: none;
+}
+
+.checkbox-custom label {
+  display: flex;
+  align-items: center;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.checkbox-custom label:before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 5px;
+  border: 2px solid #ccc;
+  border-radius: 3px;
+  background-color: #fff;
+}
+
+.checkbox-custom input[type="checkbox"]:checked + label:before {
+  background-color: #007bff;
+}
+
+.checkbox-custom label span {
+  font-weight: bold;
+}
+
+.checkbox-custom label:after {
+  content: '\2713';
+  display: none;
+  font-size: 12px;
+  color: #fff;
+}
+
+.checkbox-custom input[type="checkbox"]:checked + label:after {
+  display: inline-block;
+}
+
+#bookinstanceDetail, #genreDetail, #authorDetail, #bookDetail {
+  border: 1px solid #333;
+  margin-top: 15px;
+  padding: 20px;
+  background-color: #fff;
+  color: #000;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s, transform 0.3s;
+}
+
+#bookinstanceDetail:hover, #genreDetail:hover, #authorDetail:hover, #bookDetail:hover {
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px);
+}
+
+#bookinstanceDetail h2, #genreDetail h2, #authorDetail h2, #bookDetail h2 {
+  font-size: 24px;
+  border-bottom: 2px solid #333;
+  padding-bottom: 10px;
+  margin-bottom: 20px;
+  color: #333;
+}
+
+#bookinstanceDetail p, #genreDetail p, #authorDetail p, #bookDetail p {
+  font-size: 16px;
+  line-height: 1.6;
+  margin-bottom: 15px;
+  color: #666;
+}
+
+#bookinstanceDetail a, #genreDetail a, #authorDetail a, #bookDetail a {
+  color: #333;
+  text-decoration: none;
+  border-bottom: 1px dashed #333;
+  transition: color 0.3s, border-bottom-color 0.3s;
+}
+
+#bookinstanceDetail a:hover, #genreDetail a:hover, #authorDetail a:hover, #bookDetail a:hover {
+  color: #000;
+  border-bottom-color: #000;
 }

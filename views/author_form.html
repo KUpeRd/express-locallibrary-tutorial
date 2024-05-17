@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Author Creating</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <script src="/javascripts/sidebar.js"></script>
+
+    <h1>Author Creating</h1>
+
+    <form id="authorForm">
+        <label for="first_name">Name:</label><br>
+        <input type="text" id="first_name" name="first_name" required><br><br>
+        
+        <label for="family_name">Family name:</label><br>
+        <input type="text" id="family_name" name="family_name" required><br><br>
+        
+        <label for="date_of_birth">Date of birth:</label><br>
+        <input type="date" id="date_of_birth" name="date_of_birth" required><br><br>
+        
+        <label for="date_of_death">Date of death:</label><br>
+        <input type="date" id="date_of_death" name="date_of_death"><br><br>
+        
+        <button type="button" id="createAuthorBtn">Create author</button>
+    </form>
+
+    <script src="/javascripts/author_create.js"></script>
+</body>
+</html>

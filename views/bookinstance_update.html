@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bookinstance Updating</title>
+    <link rel="stylesheet" href="/stylesheets/style.css">
+</head>
+<body>
+    <script src="/javascripts/sidebar.js"></script>
+    <h2>Bookinstance Updating</h2>
+
+    <form id="updateForm">
+        <label for="book">Book:</label><br>
+        <select id="book" name="book" required>
+        </select><br>
+      
+        <label for="imprint">Imprint:</label><br>
+        <input type="text" id="imprint" name="imprint" required><br>
+      
+        <label for="status">Status:</label><br>
+        <select id="status" name="status" required>
+          <option value="Maintenance">Maintenance</option>
+          <option value="Available">Available</option>
+          <option value="Loaned">Loaned</option>
+          <option value="Reserved">Reserved</option>
+        </select><br>
+      
+        <label for="due_back">Due Back:</label><br>
+        <input type="date" id="due_back" name="due_back" required><br>
+      
+        <button type="submit">Update bookinstance</button>
+    </form>
+    <script src="/javascripts/bookinstance_update.js"></script>
+</body>
+</html>
